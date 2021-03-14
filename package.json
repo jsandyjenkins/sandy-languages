@@ -1,0 +1,20 @@
+{
+  "name": "sandy-languages",
+  "version": "1.0.0",
+  "description": "verb/vocab practice app / heroku test",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsandyjenkins/sandy-languages.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsandyjenkins/sandy-languages/issues"
+  },
+  "homepage": "https://github.com/jsandyjenkins/sandy-languages#readme"
+}

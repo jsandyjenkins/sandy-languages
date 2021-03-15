@@ -9,6 +9,8 @@ const pool = new Pool({
 
 function addEntry() {
 
+    const client = await pool.connect();
+
     var rowsnumber = pool.query(
         "SELECT COUNT(*) FROM test_table",
         (err, res) => {
@@ -24,5 +26,7 @@ function addEntry() {
         pool.end();
         }
     );
+
+    client.release();
 
 };

@@ -37,6 +37,7 @@ express()
       const client = await pool.connect();
       const rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
       client.query('INSERT INTO test_table values (2, 1) RETURNING *');
+      res.render('/');
       client.end();
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

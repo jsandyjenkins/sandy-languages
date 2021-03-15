@@ -32,11 +32,11 @@ express()
       res.send("Error " + err);
     }
   })
-  .post('/submit-shit', function (req, res) {
+  .post('/submit-shit', async (req, res) => {
     var words = req.body.words;
     try {
-      const client = pool.connect();
-      const rowsnumber = pool.query(
+      const client = await pool.connect();
+      const rowsnumber = await pool.query(
         'SELECT COUNT(*) FROM test_table',
         (err, res) => {
         console.log(err, res);

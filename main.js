@@ -32,7 +32,7 @@ express()
       res.send("Error " + err);
     }
   })
-  .post('/db', function (req, res) {
+  .post('/', function (req, res) {
     var words = req.body.words;
     res.send(words + ' Submitted Successfully!');
   })

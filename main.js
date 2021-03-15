@@ -10,22 +10,21 @@ const pool = new Pool({
   }
 });
 
-.get('/db', async (req, res) => {
-  try {
-    const client = await pool.connect();
-    const result = await client.query('SELECT * FROM test_table');
-    const results = { 'results': (result) ? result.rows : null};
-    res.render('pages/db', results );
-    client.release();
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
-})
-
 express()
   .use(express.static("pages"))
   .get("/", function (req, res) {
     res.send("<h1>Hello World!</h1>")
+  })
+  .get('/db', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      const result = await client.query('SELECT * FROM test_table');
+      const results = { 'results': (result) ? result.rows : null};
+      res.render('pages/db', results );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

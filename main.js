@@ -36,18 +36,18 @@ express()
     var words = req.body.words;
     try {
       const client = await pool.connect();
-      const rowsnumber = await pool.query(
+      const rowsnumber = await client.query(
         'SELECT COUNT(*) FROM test_table',
         (err, res) => {
         console.log(err, res);
-        pool.end();
+        client.end();
         }
       );
-      pool.query(
+      client.query(
         'INSERT INTO test_table values (2, 1)',
         (err, res) => {
         console.log(err, res);
-        pool.end();
+        client.end();
         }
       );
       client.release();

@@ -34,26 +34,6 @@ express()
   })
   .post('/db', function (req, res) {
     var words = req.body.words;
-    try {
-      const client = pool.connect();
-      const rowsnumber = pool.query(
-        'SELECT COUNT(*) FROM test_table',
-        (err, res) => {
-        console.log(err, res);
-        pool.end();
-        }
-      );
-      pool.query(
-        'INSERT INTO test_table values (2,3)',
-        (err, res) => {
-        console.log(err, res);
-        pool.end();
-        }
-      );
-      client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
+    res.send(words + ' Submitted Successfully!');
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

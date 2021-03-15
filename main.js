@@ -41,7 +41,7 @@ express()
     console.log(querytext);
     client.query( querytext );
     client.end();
-    res.redirect('/db')
+    res.redirect('/db');
     } catch (err) {
       console.error(err);
       res.send("Error " + err);

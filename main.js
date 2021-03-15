@@ -3,6 +3,7 @@ const path = require('path')
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 5000
 
+
 const { Pool } = require('pg');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -32,7 +33,7 @@ express()
     }
   })
   .post('/db', function (req, res) {
-    var word = req.body.word;
+    var words = req.body.words;
     try {
       const client = pool.connect();
       const rowsnumber = pool.query(

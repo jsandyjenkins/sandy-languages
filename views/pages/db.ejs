@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-</head>
+    
+    <head>
+    Words n shit
+    </head>
 
-<body>
-<div class="container">
-<h2>Database Results</h2>
+    <body>
+        <div class="container">
+        <h2>Database Results</h2>
 
-<ul>
-    <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.name %></li>
-    <% }); %>
-</ul>
+            <p>
+                <button type="button" onclick="addEntry()">Try it</button>
+                <script src="addToDatabase.js"></script>
+            </p>
 
-</div>
+            <ul>
+                <% results.forEach(function(r) { %>
+                    <li><%= r.id %> - <%= r.name %></li>
+                <% }); %>
+            </ul>
 
-</body>
+        </div>
+
+    </body>
 </html>

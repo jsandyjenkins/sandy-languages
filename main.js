@@ -32,8 +32,8 @@ express()
   .post('/db', function (req, res) {
     var word = req.body.word;
     try {
-      const client = await pool.connect();
-      const rowsnumber = await pool.query(
+      const client = pool.connect();
+      const rowsnumber = pool.query(
         'SELECT COUNT(*) FROM test_table',
         (err, res) => {
         console.log(err, res);

@@ -37,7 +37,7 @@ express()
     try {
       const client = await pool.connect();
       const rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
-      client.query('INSERT INTO test_table values (2, 1)');
+      client.query('INSERT INTO test_table values ('+rowsnumber+','+words+')');
       client.release();
     } catch (err) {
       console.error(err);

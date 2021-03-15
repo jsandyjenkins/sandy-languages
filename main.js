@@ -36,7 +36,7 @@ express()
     var words = req.body.words;
     const client = await pool.connect();
     const rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
-    client.query('INSERT INTO test_table values (' + rowsnumber + ',' + words + ')');
+    client.query('INSERT INTO test_table values (2,poop)');
     client.release();
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

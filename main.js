@@ -32,12 +32,12 @@ express()
       res.send("Error " + err);
     }
   })
-  .post('/submit-shit', async (req, res) => {
+  .post('/submit-shit', function (req, res){
     var words = req.body.words;
     try {
-      const client = await pool.connect();
-      const rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
-      await client.query('INSERT INTO test_table values (2, 1)');
+      const client = pool.connect();
+      const rowsnumber = client.query('SELECT COUNT(*) FROM test_table');
+      client.query('INSERT INTO test_table values (2, 1)');
       client.release();
     } catch (err) {
       console.error(err);

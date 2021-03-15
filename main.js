@@ -29,4 +29,28 @@ express()
       res.send("Error " + err);
     }
   })
+  .post('/db', function (req, res) {
+    var word = req.body.word;
+    try {
+      const client = await pool.connect();
+      const rowsnumber = await pool.query(
+        'SELECT COUNT(*) FROM test_table',
+        (err, res) => {
+        console.log(err, res);
+        pool.end();
+        }
+      );
+      pool.query(
+        'INSERT INTO test_table values (2,3)',
+        (err, res) => {
+        console.log(err, res);
+        pool.end();
+        }
+      );
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

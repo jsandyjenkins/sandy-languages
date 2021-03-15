@@ -16,8 +16,10 @@
             </ul>
 
             <p>
-                <button type="button" onclick="addEntry()">Try it</button>
-                <script src="addToDatabase.js"></script>
+                <form action="/submit-shit" method="post">
+                    Words: <input name="words" type="text" /> <br />
+                    <input type="submit" />
+                </form>
             </p>
 
         </div>

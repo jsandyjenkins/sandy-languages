@@ -34,14 +34,14 @@ express()
   })
   .post('/submit-shit', async (req, res) => {
     try {
-    var words = req.body.words;
-    const client = await pool.connect();
-    var rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
-    var querytext = "INSERT INTO test_table values (1, '" + words + "')";
-    console.log(querytext);
-    client.query( querytext );
-    client.end();
-    res.redirect('/db');
+      var words = req.body.words;
+      const client = await pool.connect();
+      var rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
+      var querytext = "INSERT INTO test_table values (1, '" + words + "')";
+      console.log(querytext);
+      client.query( querytext );
+      client.release();
+      res.redirect('/db');
     } catch (err) {
       console.error(err);
       res.send("Error " + err);

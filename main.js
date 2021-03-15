@@ -34,9 +34,14 @@ express()
   })
   .post('/submit-shit', async (req, res) => {
     var words = req.body.words;
-    const client = await pool.connect();
-    const rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
-    client.query('INSERT INTO test_table values (2,poop)');
-    client.release();
+    try {
+      const client = await pool.connect();
+      const rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
+      client.query('INSERT INTO test_table values (2, 1)');
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

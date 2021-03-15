@@ -39,7 +39,7 @@ express()
     var querytext = "INSERT INTO test_table values (1, '" + words + "')";
     console.log(querytext);
     client.query( querytext );
-    res.sendFile(path.join(__dirname + '/views/pages/db.html'));
+    res.render(path.join(__dirname + '/views/pages/db.ejs'));
     client.end();
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

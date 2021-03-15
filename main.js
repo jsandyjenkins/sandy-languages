@@ -37,6 +37,7 @@ express()
       const client = await pool.connect();
       const rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
       var querytext = "INSERT INTO test_table values (" + rowsnumber + ", '" + words + "')";
+      console.log(querytext);
       client.query( querytext );
       res.sendFile(path.join(__dirname + '/pages/index.html'));
       client.end();

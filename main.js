@@ -12,6 +12,8 @@ const pool = new Pool({
 
 express()
   .use(express.static("pages"))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
   .get("/", function (req, res) {
     res.send("<h1>Hello World!</h1>")
   })

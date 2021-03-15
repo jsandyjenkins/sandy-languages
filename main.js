@@ -33,6 +33,7 @@ express()
     }
   })
   .post('/submit-shit', async (req, res) => {
+    try {
     var words = req.body.words;
     const client = await pool.connect();
     var rowsnumber = await client.query('SELECT COUNT(*) FROM test_table');
@@ -41,5 +42,9 @@ express()
     client.query( querytext );
     res.redirect('/db')
     client.end();
+  } catch (err) {
+    console.error(err);
+    res.send("Error " + err);
+  }
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

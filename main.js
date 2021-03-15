@@ -40,11 +40,11 @@ express()
     var querytext = "INSERT INTO test_table values (1, '" + words + "')";
     console.log(querytext);
     client.query( querytext );
-    res.redirect('/db')
     client.end();
-  } catch (err) {
-    console.error(err);
-    res.send("Error " + err);
-  }
+    res.redirect('/db')
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))

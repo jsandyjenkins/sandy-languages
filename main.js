@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 5000
 
 const { Pool } = require('pg');
@@ -11,6 +12,7 @@ const pool = new Pool({
 });
 
 express()
+  .use(bodyParser.urlencoded({ extended: false }))
   .use(express.static("pages"))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')

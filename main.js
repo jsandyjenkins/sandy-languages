@@ -17,9 +17,6 @@ express()
   .use(express.static("pages"))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get("/", function (req, res) {
-    res.send("<h1>Hello World!</h1>")
-  })
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
@@ -31,9 +28,6 @@ express()
       console.error(err);
       res.send("Error " + err);
     }
-  })
-  .get('/game', function (req, res) {
-    res.render('pages/game');
   })
   .post('/submit-shit', async (req, res) => {
     try {

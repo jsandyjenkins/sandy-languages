@@ -32,6 +32,9 @@ express()
       res.send("Error " + err);
     }
   })
+  .get('/game', function (req, res) {
+    res.render('pages/game');
+  })
   .post('/submit-shit', async (req, res) => {
     try {
       var words = req.body.words;

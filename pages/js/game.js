@@ -24,6 +24,15 @@ input.addEventListener("keyup", function(event) {
 	}
 });
 
+document.getElementById("myBtn").addEventListener("click", function() {
+	event.preventDefault();
+	if (input.value === obj.word_list[currentWord].past_simple) {
+		currentWord = Math.floor(Math.random() * 94);
+		myHeading.textContent = obj.word_list[currentWord].infinitive;
+		input.value = "";
+	}
+});
+
 
 
 

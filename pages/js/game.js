@@ -3,6 +3,7 @@ input.placeholder = "Enter here";
 var currentWord = Math.round(Math.random() * 94);
 var tense = Math.round(Math.random());
 const myHeading = document.querySelector('h1');
+const errorBox = document.querySelector('p');
 var obj;
 
 fetch('./js/json/irreg_verbs.json')
@@ -31,6 +32,9 @@ input.addEventListener("keyup", function(event) {
 					myHeading.textContent = "Past Perfect: " + obj.word_list[currentWord].infinitive;
 				}
 				input.value = "";
+				errorBox.textContent = "";
+			}else{
+				errorBox.textContent = obj.word_list[currentWord].past_simple;
 			}
 		}else{
 			if (input.value === obj.word_list[currentWord].past_participle) {
@@ -42,6 +46,9 @@ input.addEventListener("keyup", function(event) {
 					myHeading.textContent = "Past Perfect: " + obj.word_list[currentWord].infinitive;
 				}
 				input.value = "";
+				errorBox.textContent = "";
+			}else{
+				errorBox.textContent = obj.word_list[currentWord].past_participle;
 			}
 		}
 	}
@@ -59,6 +66,9 @@ document.getElementById("myBtn").addEventListener("click", function() {
 				myHeading.textContent = "Past Perfect: " + obj.word_list[currentWord].infinitive;
 			}
 			input.value = "";
+			errorBox.textContent = "";
+		}else{
+			errorBox.textContent = obj.word_list[currentWord].past_simple;
 		}
 	}else{
 		if (input.value === obj.word_list[currentWord].past_participle) {
@@ -70,6 +80,9 @@ document.getElementById("myBtn").addEventListener("click", function() {
 				myHeading.textContent = "Past Perfect: " + obj.word_list[currentWord].infinitive;
 			}
 			input.value = "";
+			errorBox.textContent = "";
+		}else{
+			errorBox.textContent = obj.word_list[currentWord].past_participle;
 		}
 	}
 });
